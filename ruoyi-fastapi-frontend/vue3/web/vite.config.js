@@ -42,12 +42,12 @@ export default defineConfig(({ mode, command }) => {
     },
     // vite 相关配置
     server: {
-      port: 80,
+      port: 8199,
       host: true,
       open: true,
       proxy: {
         [`${pluginBase}/apps/`]: {
-          target: 'http://127.0.0.1:9099',
+          target: 'http://127.0.0.1:9199',
           changeOrigin: false,
           ws: true,
           // Uvicorn 会补回 root_path，转发时只剥离一次外部部署前缀。
@@ -69,26 +69,26 @@ export default defineConfig(({ mode, command }) => {
           },
         },
         [`${pluginBase}/plugin/runtime/`]: {
-          target: 'http://127.0.0.1:9099',
+          target: 'http://127.0.0.1:9199',
           changeOrigin: false,
           rewrite: (requestPath) => requestPath.slice(pluginBase.length),
         },
         // https://cn.vitejs.dev/config/#server-proxy
         '/dev-api': {
-          target: 'http://127.0.0.1:9099',
+          target: 'http://127.0.0.1:9199',
           changeOrigin: true,
           rewrite: (p) => p.replace(/^\/dev-api/, ''),
         },
         '/.well-known': {
-          target: 'http://127.0.0.1:9099',
+          target: 'http://127.0.0.1:9199',
           changeOrigin: true,
         },
         '/oauth2': {
-          target: 'http://127.0.0.1:9099',
+          target: 'http://127.0.0.1:9199',
           changeOrigin: true,
         },
         '/auth/interaction': {
-          target: 'http://127.0.0.1:9099',
+          target: 'http://127.0.0.1:9199',
           changeOrigin: true,
         },
       },

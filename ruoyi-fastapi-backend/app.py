@@ -1,4 +1,9 @@
+import os
+
 import uvicorn
+
+# 切换到后端根目录，保证从任意目录启动时 .env、日志、上传等相对路径都能正确解析
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from config.env import AppConfig
 from server import create_app

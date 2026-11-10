@@ -749,7 +749,8 @@ class GetConfig:
             run_env = args.env or run_env
         # 运行环境未指定时默认加载.env.dev
         run_env = run_env.strip() or 'dev'
-        env_file = f'.env.{run_env}'
+        backend_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        env_file = os.path.join(backend_root, f'.env.{run_env}')
         # 加载配置，已通过外部命令设置的环境变量保持优先
         load_dotenv(env_file)
         return run_env

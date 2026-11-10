@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: kbweb
+name: 循证知识库客户端
+version: 0.1.0
+description: 面向客户端网站的只读检索接口：文献题录、结构化证据（研究发现、推荐意见、原文溯源）、概念与循证问题。
+
+metadata:
+  category: knowledge
+  tags:
+    - evidence
+    - knowledge-base
+  author: cdss
+  license: MIT
+
+backend:
+  module: plugins.kbweb
+  routers:
+    autoScan: true
+  migrations: []
+  seeds: []
+  jobs: []
+
+frontend:
+  delivery:
+    type: none
+
+compatibility:
+  databases:
+    - postgresql

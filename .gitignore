@@ -107,6 +107,8 @@ celerybeat.pid
 
 # Environments
 .env
+# 本机私密配置（API Key / Token），不入库
+.env.*.local
 .venv
 env/
 venv/
